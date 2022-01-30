@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+// store modules
+import { Provider } from 'react-redux';
+import createStore from './duck/store/store'
+
+// router modules
+import { ConnectedRouter } from 'connected-react-router';
+import { createBrowserHistory } from "history"
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const history: any = createBrowserHistory();
+export const store = createStore(history);
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // Provider: store の情報を参照できるようにする
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
