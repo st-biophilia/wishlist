@@ -15,13 +15,13 @@ const App = () => {
     <React.Fragment>
       <AddWishlist />
       <ul>
-          {wishlist.map((wish: string, index: number) => {
-              return (
-                  <div key = {wish}>
-                      <li>{wish}</li>
-                  </div>
-              );
-          })}
+        {wishlist.map((wish: string, index: number) => {
+          return (
+            <div key = {wish}>
+              <li>{wish}</li>
+            </div>
+          );
+        })}
       </ul>
     </React.Fragment>
   );
